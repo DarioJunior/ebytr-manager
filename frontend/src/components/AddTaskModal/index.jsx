@@ -22,18 +22,25 @@ export function AddTaskModal(props) {
         <ModalTitle>Add Task:</ModalTitle>
       </ModalHeader>
       <ModalBody>
-        <ContainerBody action="POST">
+        <ContainerBody action="localhost:3333/task" method="POST">
             <Input
+              name="taskName"
               type="text"
               placeholder="Add task..."
+              required
             />
             <TextArea
-              name="teste"
+              name="taskDescription"
               type="text"
               placeholder="Add description..."
+              required
             />
-            <Input type="date" />
-            <Select name="category" id="">
+            <Input
+              name="taskDate"
+              type="date"
+              required
+            />
+            <Select name="taskCategory" id="taskCategory" required>
               <option value="" hidden>
                 Categoria
               </option>
