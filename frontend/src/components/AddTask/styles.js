@@ -12,8 +12,7 @@ export const Container = styled.section`
 `;
 
 export const Button = styled.button`
-  @media screen and (max-width: 360px) {
-
+  @media screen and (min-width: 200px) {
     font-size: 2rem;
     width: 90vw;
     height: 80px;
@@ -22,6 +21,4 @@ export const Button = styled.button`
   background-color: #B4D6C1;
   border-radius: 5px;
   font-weight: 800;
-  height: 30px;
-  width: 170px;;
 `;

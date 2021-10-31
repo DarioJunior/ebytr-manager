@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  @media screen and (max-width: 360px) {
-    background-color: #207567;
-  }
+  background-color: #207567;
   height: 70vh;
   margin: 0 auto;
   max-width: 1440px;
@@ -12,7 +10,7 @@ export const Container = styled.section`
 `;
 
 export const TaskContainer = styled.div`
-  @media screen and (max-width: 360px) {
+  @media screen and (min-width: 200px) {
     width: 90%;
     min-width: 200px;
   }
@@ -42,8 +40,6 @@ export const ParagraphDescription = styled.p`
 `
 
 export const Button = styled.button`
-  @media screen and (max-width: 360px) {
-  }
   background-color: ${props => props.red ? 'red' : '#207567'};
   border-radius: 4px;
   color: white;

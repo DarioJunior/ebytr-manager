@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerBody = styled.form`
-  @media screen and (max-width: 360px) {
+  @media screen and (min-width: 200px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@ export const ContainerBody = styled.form`
 `;
 
 export const Input = styled.input`
-  @media screen and (max-width: 360px) {
+  @media screen and (min-width: 200px) {
     background-color: #207567;
     color: white;
     width: 85vw;
@@ -31,7 +31,7 @@ export const Input = styled.input`
 `;
 
 export const TextArea = styled.textarea`
-  @media screen and (max-width: 360px) {
+  @media screen and (min-width: 200px) {
     width: 85vw;
   }
   background-color: #207567;
@@ -47,7 +47,7 @@ export const TextArea = styled.textarea`
 `;
 
 export const Select = styled.select`
-  @media screen and (max-width: 360px) {
+  @media screen and (min-width: 200px) {
     color: white;
     width: 85vw;
   }
