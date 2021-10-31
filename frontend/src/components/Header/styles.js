@@ -1,7 +1,7 @@
 import styled from "styled-components";
 // #DFEAE2 #B4D6C1 #8DC3A7 #6BAF92 #4E9C81 #358873 #207567
 export const Container = styled.header`
-  @media screen and (max-width: 360px) {
+  @media screen and (min-width: 200px) {
     background-color: #207567;
   }
 
@@ -15,7 +15,7 @@ export const Container = styled.header`
 `;
 
 export const LogoContainer = styled.div`
-  @media screen and (max-width: 360px) {
+  @media screen and (min-width: 200px) {
     background-color: #8DC3A7;
     margin: 0 auto;
   }
