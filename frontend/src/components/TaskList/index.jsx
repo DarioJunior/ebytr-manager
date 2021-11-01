@@ -31,14 +31,14 @@ export function TaskList() {
                   type="button"
                   onClick={() => { setCurrentTask(task); setModalShow(true); }}
                 >
-                  Editar
+                  Edit
                 </Button>
                 <Button
                   key={index}
                   type="button"
                   red
                 >
-                  Excluir
+                  Delete
                 </Button>
 
               </TaskContainer>
