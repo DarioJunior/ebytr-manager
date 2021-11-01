@@ -16,7 +16,7 @@ export const TaskContainer = styled.div`
   }
   background-color: white;
   border-radius: 8px;
-  margin: 15px auto;
+  margin: 25px auto;
   padding: 10px 20px;
   text-align: center;
   width: 45%;
@@ -25,7 +25,7 @@ export const TaskContainer = styled.div`
 
   :hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `;
 

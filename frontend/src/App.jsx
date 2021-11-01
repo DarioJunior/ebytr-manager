@@ -8,18 +8,17 @@ import {
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 
-
 export function App() {
-  return(
+  return (
     <BrowserRouter>
-       <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
     </BrowserRouter>
   );
 }
