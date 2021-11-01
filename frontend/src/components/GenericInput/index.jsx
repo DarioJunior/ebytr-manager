@@ -7,7 +7,6 @@ export function GenericInput(props) {
   const handleInputChange = (target) => {
     const value = target.value;
     setInputValue(value);
-    console.log(inputValue)
   };
 
   return (
