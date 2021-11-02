@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { loginAction } from '../../actions/user.actions';
-import { validateLogin } from '../../services/login.services';
+import { validateLogin } from '../../api/login.services';
 import { Container, Input, Button } from './styles';
 
 export function Login() {

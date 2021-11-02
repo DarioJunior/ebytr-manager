@@ -12,10 +12,10 @@ export function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/login">
+        <Route exact path="/">
           <Login />
         </Route>
-        <Route path="/">
+        <Route path="/home">
           <Home />
         </Route>
       </Switch>
