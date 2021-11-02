@@ -23,6 +23,7 @@ export async function addTask(
   return false;
 }
 
-export async function test() {
-  return true;
+export async function getAllTasks() {
+  const { data } = await axios.get(BASE_URL, { headers: { Authorization: 'xxxxx' } });
+  return data;
 }

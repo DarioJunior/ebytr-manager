@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { React, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
@@ -16,6 +17,7 @@ export default function AddTaskModal(props) {
   const [taskDescriptionValue, setTaskDescriptionValue] = useState('');
   const [taskDateValue, setTaskDateValue] = useState('');
   const [taskStatusValue, setTaskStatusValue] = useState('');
+  const history = useHistory();
 
   function resetFieldValues() {
     setTaskNameValue();
