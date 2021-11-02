@@ -16,7 +16,7 @@ const HTTP_STATUS = {
     INVALID_ENTRIES: { message: 'Invalid entries. Try again.' },
     INVALID_TOKEN: { message: 'jwt malformed' },
     MISSING_TOKEN: { message: 'missing auth token' },
-    RECIPE_NOT_FOUND: { message: 'recipe not found' },
+    TASKS_NOT_FOUND: { message: 'tasks not found' },
 };
 
 module.exports = HTTP_STATUS;

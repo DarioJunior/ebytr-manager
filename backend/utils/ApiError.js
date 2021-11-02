@@ -48,10 +48,10 @@ class ApiError {
     );
   }
 
-  static recipeNotFound() {
+  static tasksNotFound() {
     return new ApiError(
       HTTP_STATUS.code.NOT_FOUND,
-      HTTP_STATUS.RECIPE_NOT_FOUND,
+      HTTP_STATUS.TASKS_NOT_FOUND,
     );
   }
 
