@@ -1,5 +1,9 @@
-import { useState } from 'react';
+import { React, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { TaskModal } from '../TaskModal';
+
+import { getAllTasks } from '../../api/task.services';
+import addTasksList from '../../actions/tasks.actions';
 
 import {
   Button,
@@ -10,47 +14,63 @@ import {
   TaskContainer,
 } from './styles';
 
-import TASKS from '../../api/tasks.mock';
+export default function TaskList() {
+  const IS_LOADING_STORE = useSelector((state) => state.TasksReducer.isLoading);
+  const TASK_LIST_STORE = useSelector((state) => state.TasksReducer.tasks);
 
-export function TaskList() {
+  const [isLoading, setIsLoading] = useState(IS_LOADING_STORE);
+  const [taskList, setTaskList] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const [currentTask, setCurrentTask] = useState('');
-  
-  return (
-    <>
-      <Container>
-        {
-          TASKS.map((task, index) => {
-            return (
-              <TaskContainer key={ index }>
-                <ParagraphName key={ index +1}>{task.name}:</ParagraphName>
-                <ParagraphDescription key={ index + 2 }>{task.description}</ParagraphDescription>
-                <ParagraphStatus key={ index + 3 }>{task.status}</ParagraphStatus>
-                <Button
-                  key={ index + 4}
-                  type="button"
-                  onClick={() => { setCurrentTask(task); setModalShow(true); }}
-                >
-                  Edit
-                </Button>
-                <Button
-                  key={ index + 5}
-                  type="button"
-                  red
-                >
-                  Delete
-                </Button>
+  const dispatch = useDispatch();
 
-              </TaskContainer>
-            )
-          })
-        }
-        <TaskModal
-          task={currentTask}
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      </Container>
-    </>
-  )
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const data = await getAllTasks();
+      if (data.length !== 0) {
+        dispatch(addTasksList(data));
+        setIsLoading(false);
+      }
+    };
+    fetchTasks();
+  }, []);
+
+  useEffect(() => {
+    setTaskList(TASK_LIST_STORE);
+  }, [isLoading, TASK_LIST_STORE]);
+
+  return (
+    <Container>
+      {
+        isLoading ? <p>CARREGANDO</p>
+          : taskList.map((task, index) => (
+            <TaskContainer key={ index }>
+              <ParagraphName>
+                {task.name}
+                :
+              </ParagraphName>
+              <ParagraphDescription>{task.description}</ParagraphDescription>
+              <ParagraphStatus>{task.status}</ParagraphStatus>
+              <Button
+                type="button"
+                onClick={ () => { setCurrentTask(task); setModalShow(true); } }
+              >
+                Edit
+              </Button>
+              <Button
+                type="button"
+                red
+              >
+                Delete
+              </Button>
+            </TaskContainer>
+          ))
+      }
+      <TaskModal
+        task={ currentTask }
+        show={ modalShow }
+        onHide={ () => setModalShow(false) }
+      />
+    </Container>
+  );
 }

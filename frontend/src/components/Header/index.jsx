@@ -1,7 +1,9 @@
+import { React } from 'react';
+import { useSelector } from 'react-redux';
 import { Container, Logo, LogoContainer } from './styles';
-import { useSelector } from 'react-redux'
-export function Header() {
-  const userInfos = useSelector(state => state.UserReducer.user);
+
+export default function Header() {
+  const userInfos = useSelector((state) => state.UserReducer.user);
   return (
     <Container>
       <LogoContainer>
@@ -13,5 +15,5 @@ export function Header() {
         </p>
       </LogoContainer>
     </Container>
-  )
+  );
 }
