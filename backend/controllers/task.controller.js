@@ -25,7 +25,7 @@ async function getTasksByUser(req, res, next) {
     const allTasksByUser = await TaskService.getTasksByUser(userId);
 
     if (allTasksByUser.length === 0) {
-      return next(ApiError.tasksNotFound());
+      return res.status(HTTP_STATUS.code.OK).json([]);
     }
 
     if (allTasksByUser) {
