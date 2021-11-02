@@ -40,13 +40,13 @@ export function AddTaskModal(props) {
               type="date"
               required
             />
-            <Select name="taskCategory" id="taskCategory" required>
+            <Select name="taskStatus" id="taskStatus" required>
               <option value="" hidden>
-                Categoria
+                Status
               </option>
-              <option value="Frontend">Frontend</option>
-              <option value="Backend">Backend</option>
-              <option value="Scrum">Scrum</option>
+              <option value="pending">Pending</option>
+              <option value="in_progess">In Progress</option>
+              <option value="concluded">Concluded</option>
             </Select>
             <Button type="submit">
               Adicionar
