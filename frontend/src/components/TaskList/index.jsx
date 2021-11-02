@@ -22,19 +22,19 @@ export function TaskList() {
         {
           TASKS.map((task, index) => {
             return (
-              <TaskContainer>
-                <ParagraphName key={index}>{task.name}:</ParagraphName>
-                <ParagraphDescription key={index}>{task.description}</ParagraphDescription>
-                <ParagraphStatus key={index}>{task.status}</ParagraphStatus>
+              <TaskContainer key={ index }>
+                <ParagraphName key={ index +1}>{task.name}:</ParagraphName>
+                <ParagraphDescription key={ index + 2 }>{task.description}</ParagraphDescription>
+                <ParagraphStatus key={ index + 3 }>{task.status}</ParagraphStatus>
                 <Button
-                  key={index}
+                  key={ index + 4}
                   type="button"
                   onClick={() => { setCurrentTask(task); setModalShow(true); }}
                 >
                   Edit
                 </Button>
                 <Button
-                  key={index}
+                  key={ index + 5}
                   type="button"
                   red
                 >

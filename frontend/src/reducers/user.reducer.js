@@ -3,7 +3,6 @@ const INITIAL_STATE = {
   user: { 
     name: '',
     email: '',
-    password: '',
     role: '',
   }
 };
@@ -12,6 +11,7 @@ export function UserReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'LOGIN':
       return {
+        ...state,
         isLoggedIn: true,
         user: action.payload,
       }

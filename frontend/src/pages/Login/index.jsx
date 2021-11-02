@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { loginAction } from '../../actions/user.actions';
 import { validateLogin } from '../../services/login.services';
 import { Container, Input, Button } from './styles';
 
@@ -9,6 +11,7 @@ export function Login() {
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -21,7 +24,14 @@ export function Login() {
 
   async function handleSubmitForm(event) {
     event.preventDefault();
-    console.log('click')
+    const userExists = await validateLogin(emailInput, passwordInput);
+
+    if(userExists) {
+      dispatch(loginAction(userExists));
+      return history.push('/home');
+    };
+    alert('Usuário não existe, tente novamente');
+    return history.push('/login');
   }
 
   return (

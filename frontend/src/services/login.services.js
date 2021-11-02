@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3333/';
+const BASE_URL = 'http://localhost:3333/login';
 
 export async function validateLogin(email, password) {
-  // const getEmailInDB = await axios.post(BASE_URL, {
-  //   email,
-  //   password,
-  // })
+  const { data } = await axios.post(BASE_URL, {
+    email,
+    password,
+  })
 
-  // console.log(getEmailInDB);
-  return true;
+  if (data) {
+    return data;
+  } 
+  return false;
 }
