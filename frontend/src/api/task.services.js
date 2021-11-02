@@ -1,15 +1,30 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3333/login';
+const BASE_URL = 'http://localhost:3333/tasks';
 
-export async function validateLogin(email, password) {
-  // const { data } = await axios.post(BASE_URL, {
-  //   email,
-  //   password,
-  // })
+const CREATED_STATUS = 201;
 
-  // if (data) {
-  //   return data;
-  // } 
+export async function addTask(
+  taskNameValue,
+  taskDescriptionValue,
+  taskDateValue,
+  taskStatusValue,
+  userId = 'admin',
+) {
+  const { status } = await axios.post(BASE_URL, {
+    taskNameValue,
+    taskDescriptionValue,
+    taskDateValue,
+    taskStatusValue,
+    userId,
+  });
+
+  if (status === CREATED_STATUS) {
+    return true;
+  }
   return false;
+}
+
+export async function test() {
+  return true;
 }

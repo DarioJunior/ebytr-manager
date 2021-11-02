@@ -12,7 +12,7 @@ async function addTask(req, res, next) {
     const addictedTask = await TaskService.addTask(taskInfo);
 
     if (addictedTask) {
-      return res.status(HTTP_STATUS.code.CREATED);
+      return res.status(HTTP_STATUS.code.CREATED).send('Task adicionada com sucesso');
     }
     return next(ApiError.allFieldsRequired());
   } catch (err) {
