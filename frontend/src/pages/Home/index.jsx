@@ -1,10 +1,11 @@
+import { React } from 'react';
 import { Header } from '../../components/Header';
-import { AddTask } from '../../components/AddTask';
+import AddTask from '../../components/AddTask';
 import { TaskList } from '../../components/TaskList';
 
 import { Container } from './styles';
 
-export function Home() {
+export default function Home() {
   return (
     <Container>
       <Header />

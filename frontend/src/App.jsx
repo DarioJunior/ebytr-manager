@@ -1,14 +1,15 @@
-import React from "react";
+import { React } from 'react';
+
 import {
   BrowserRouter,
   Switch,
   Route,
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import { Home } from './pages/Home';
-import { Login } from './pages/Login';
+import Home from './pages/Home';
+import Login from './pages/Login';
 
-export function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Switch>

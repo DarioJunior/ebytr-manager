@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { React, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginAction } from '../../actions/user.actions';
 import { validateLogin } from '../../api/login.services';
+
 import { Container, Input, Button } from './styles';
 
-export function Login() {
-  const [ loginButtonDisabled, setLoginButtonDisabled] = useState(true);
+export default function Login() {
+  const [loginButtonDisabled, setLoginButtonDisabled] = useState(true);
 
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -26,10 +27,11 @@ export function Login() {
     event.preventDefault();
     const userExists = await validateLogin(emailInput, passwordInput);
 
-    if(userExists) {
+    if (userExists) {
       dispatch(loginAction(userExists));
       return history.push('/home');
-    };
+    }
+
     alert('Usuário não existe, tente novamente');
     return history.push('/login');
   }
@@ -40,14 +42,14 @@ export function Login() {
         name="email"
         placeholder="email@example.com"
         type="text"
-        onChange={({target}) => setEmailInput(target.value)}
+        onChange={ ({ target }) => setEmailInput(target.value) }
         valor={ emailInput }
       />
       <Input
         name="password"
         placeholder="password"
         type="password"
-        onChange={({target}) => setPasswordInput(target.value)}
+        onChange={ ({ target }) => setPasswordInput(target.value) }
         valor={ passwordInput }
       />
       <Button
