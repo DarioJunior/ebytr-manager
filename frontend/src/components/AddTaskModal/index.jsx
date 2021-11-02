@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import { React, useState } from 'react';
 
-import { addTask } from '../../api/task.services';
-
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalHeader from 'react-bootstrap/ModalHeader';
 import ModalFooter from 'react-bootstrap/ModalFooter';
 import ModalTitle from 'react-bootstrap/ModalTitle';
+
+import { addTask } from '../../api/task.services';
 import { ContainerBody, Input, Select, TextArea, Button } from './styles';
 
 export default function AddTaskModal(props) {

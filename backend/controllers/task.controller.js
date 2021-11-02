@@ -2,6 +2,22 @@ const ApiError = require('../utils/ApiError');
 const HTTP_STATUS = require('../utils/HttpsCodes');
 const TaskService = require('../services/task.services');
 
+async function addTask(req, res, next) {
+  try {
+    const taskInfo = req.body;
+    // const userId = req;
+    const userId = 'admin';
+    const addictedTask = await TaskService.addTask(taskInfo, userId);
+
+    if (addictedTask) {
+      return res.status(HTTP_STATUS.code.CREATED).send('Task adicionada com sucesso');
+    }
+    return next(ApiError.allFieldsRequired());
+  } catch (err) {
+    return next(ApiError.internalServerError());
+  }
+}
+
 async function getTasksByUser(req, res, next) {
   try {
     // const userId = req;
@@ -17,20 +33,6 @@ async function getTasksByUser(req, res, next) {
     }
 
     return next(ApiError.incorrectInfos());
-  } catch (err) {
-    return next(ApiError.internalServerError());
-  }
-}
-
-async function addTask(req, res, next) {
-  try {
-    const taskInfo = req.body;
-    const addictedTask = await TaskService.addTask(taskInfo);
-
-    if (addictedTask) {
-      return res.status(HTTP_STATUS.code.CREATED).send('Task adicionada com sucesso');
-    }
-    return next(ApiError.allFieldsRequired());
   } catch (err) {
     return next(ApiError.internalServerError());
   }

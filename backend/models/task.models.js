@@ -1,7 +1,7 @@
 const connection = require('./connection');
 
-async function addTaskInDB(taskInfo) {
-  const { taskNameValue, taskDescriptionValue, taskDateValue, taskStatusValue, userId } = taskInfo;
+async function addTaskInDB(taskInfo, userId) {
+  const { taskNameValue, taskDescriptionValue, taskDateValue, taskStatusValue } = taskInfo;
   const result = await connection()
   .then((db) => db.collection('tasks')
   .insertOne({

@@ -9,14 +9,12 @@ export async function addTask(
   taskDescriptionValue,
   taskDateValue,
   taskStatusValue,
-  userId = 'admin',
 ) {
   const { status } = await axios.post(BASE_URL, {
     taskNameValue,
     taskDescriptionValue,
     taskDateValue,
     taskStatusValue,
-    userId,
   });
 
   if (status === CREATED_STATUS) {
