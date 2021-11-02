@@ -17,6 +17,12 @@ export default function AddTaskModal(props) {
   const [taskDateValue, setTaskDateValue] = useState('');
   const [taskStatusValue, setTaskStatusValue] = useState('');
 
+  function resetFieldValues() {
+    setTaskNameValue();
+    setTaskDescriptionValue();
+    setTaskDateValue();
+    setTaskStatusValue();
+  }
   async function handleSubmitForm(event) {
     event.preventDefault();
 
@@ -27,9 +33,8 @@ export default function AddTaskModal(props) {
       taskStatusValue,
     );
 
-    console.log(success);
-
     if (success) {
+      resetFieldValues();
       return onHide();
     }
     return alert('Revise as informações e tente novamente.');
