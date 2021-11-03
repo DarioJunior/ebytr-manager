@@ -87,9 +87,9 @@ export default function AddTaskModal(props) {
             <option value="" hidden>
               Status
             </option>
-            <option value="pending">Pending</option>
-            <option value="in_progess">In Progress</option>
-            <option value="concluded">Concluded</option>
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Concluded">Concluded</option>
           </Select>
           <Button type="submit">
             Adicionar

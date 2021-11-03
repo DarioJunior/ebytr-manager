@@ -5,8 +5,7 @@ const TaskService = require('../services/task.services');
 async function addTask(req, res, next) {
   try {
     const taskInfo = req.body;
-    // const userId = req;
-    const userId = 'admin';
+    const { userId } = req;
     const addictedTask = await TaskService.addTask(taskInfo, userId);
 
     if (addictedTask) {
@@ -20,8 +19,7 @@ async function addTask(req, res, next) {
 
 async function getTasksByUser(req, res, next) {
   try {
-    // const userId = req;
-    const userId = 'admin';
+    const { userId } = req;
     const allTasksByUser = await TaskService.getTasksByUser(userId);
 
     if (allTasksByUser.length === 0) {
@@ -38,7 +36,25 @@ async function getTasksByUser(req, res, next) {
   }
 }
 
+async function updateTask(req, res, next) {
+  try {
+    const taskInfo = req.body;
+    const { userId } = req;
+
+    const updatedResult = await TaskService.updateTask(taskInfo, userId);
+
+    if (updatedResult) {
+      return res.status(HTTP_STATUS.code.OK).send('Task atualizada com sucesso');
+    }
+
+    return next(ApiError.invalidEntries());
+  } catch (err) {
+    return next(ApiError.internalServerError());
+  }
+}
+
 module.exports = {
   getTasksByUser,
   addTask,
+  updateTask,
 };

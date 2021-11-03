@@ -13,12 +13,12 @@ export async function addTask(
   const token = JSON.parse(localStorage.getItem('token'));
 
   const { status } = await axios.post(BASE_URL, {
-    headers: { Authorization: `Bearer ${token}` },
-  }, {
     taskNameValue,
     taskDescriptionValue,
     taskDateValue,
     taskStatusValue,
+  }, {
+    headers: { Authorization: token },
   });
 
   if (status === CREATED_STATUS) {
@@ -28,6 +28,27 @@ export async function addTask(
 }
 
 export async function getAllTasks() {
-  const { data } = await axios.get(BASE_URL, { headers: { Authorization: 'xxxxx' } });
+  const token = JSON.parse(localStorage.getItem('token'));
+  const { data } = await axios.get(BASE_URL, { headers: { Authorization: token } });
   return data;
+}
+
+export async function editTask(
+  _id,
+  taskNameValue,
+  taskDescriptionValue,
+  taskDateValue,
+  taskStatusValue,
+) {
+  const token = JSON.parse(localStorage.getItem('token'));
+
+  const result = await axios.put(BASE_URL, {
+    _id,
+    taskNameValue,
+    taskDescriptionValue,
+    taskDateValue,
+    taskStatusValue,
+  }, { headers: { Authorization: token } });
+
+  return result;
 }
