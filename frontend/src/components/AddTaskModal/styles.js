@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContainerBody = styled.form`
   @media screen and (min-width: 200px) {
@@ -21,19 +21,37 @@ export const Input = styled.input`
     ::placeholder {
       color: white;
     }
-    padding: 10px;
+  }
 
+  @media screen and (min-width: 575px) {
+    width: 450px;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 750px;
+    transition: all 1s;
   }
 
   border: 2px solid grey;
   border-radius: 5px; 
   height:35px;
+  padding: 10px;
 `;
 
 export const TextArea = styled.textarea`
   @media screen and (min-width: 200px) {
     width: 85vw;
   }
+
+  @media screen and (min-width: 575px) {
+    width: 450px;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 750px;
+    transition: all 1s;
+  }
+
   background-color: #207567;
   color: white;
   border: 2px solid grey;
@@ -51,6 +69,16 @@ export const Select = styled.select`
     color: white;
     width: 85vw;
   }
+
+  @media screen and (min-width: 575px) {
+    width: 450px;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 750px;
+    transition: all 1s;
+  }
+
   background-color: #207567;
   border: 2px solid grey;
   border-radius: 5px; 
