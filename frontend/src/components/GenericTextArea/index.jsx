@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
 import { React, useState } from 'react';
 import { TextArea } from './styles';
 
@@ -22,6 +22,10 @@ export default function GenericTextArea(props) {
   );
 }
 
+GenericTextArea.defaultProps = {
+  textValue: '',
+};
+
 GenericTextArea.propTypes = {
-  textValue: PropTypes.string.isRequired,
+  textValue: PropTypes.string,
 };

@@ -8,8 +8,9 @@ export default async function validateLogin(email, password) {
     password,
   });
 
-  if (data) {
-    return data;
+  localStorage.setItem('token', JSON.stringify(data.token));
+  if (data.result) {
+    return data.result;
   }
   return false;
 }

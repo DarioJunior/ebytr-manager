@@ -13,6 +13,7 @@ import { Button, ModalBodyContainer } from './styles';
 
 export default function TaskModal(props) {
   const { task, onHide } = props;
+
   return (
     <Modal
       { ...props }
@@ -46,11 +47,15 @@ export default function TaskModal(props) {
   );
 }
 
+TaskModal.defaultProps = {
+  task: {},
+};
+
 TaskModal.propTypes = {
   onHide: PropTypes.func.isRequired,
   task: PropTypes.shape({
     description: PropTypes.string,
     name: PropTypes.string,
     status: PropTypes.string,
-  }).isRequired,
+  }),
 };

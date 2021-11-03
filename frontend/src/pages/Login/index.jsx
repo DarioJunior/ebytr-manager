@@ -34,7 +34,7 @@ export default function Login() {
     }
 
     alert('Usuário não existe, tente novamente');
-    return history.push('/login');
+    return history.push('/');
   }
 
   return (
