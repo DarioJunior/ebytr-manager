@@ -21,7 +21,7 @@ export default function TaskList() {
   const [isLoading, setIsLoading] = useState(IS_LOADING_STORE);
   const [taskList, setTaskList] = useState([]);
   const [modalShow, setModalShow] = useState(false);
-  const [currentTask, setCurrentTask] = useState('');
+  const [currentTask, setCurrentTask] = useState({});
   const dispatch = useDispatch();
 
   useEffect(() => {

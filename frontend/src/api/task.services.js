@@ -10,7 +10,11 @@ export async function addTask(
   taskDateValue,
   taskStatusValue,
 ) {
+  const token = JSON.parse(localStorage.getItem('token'));
+
   const { status } = await axios.post(BASE_URL, {
+    headers: { Authorization: `Bearer ${token}` },
+  }, {
     taskNameValue,
     taskDescriptionValue,
     taskDateValue,

@@ -8,6 +8,7 @@ export const Container = styled.form`
   justify-content: center;
   height: 100vh;
   max-width: 1440px;
+  margin: 0 auto;
   width: 100vw;
 `;
 
@@ -64,5 +65,9 @@ export const Button = styled.button`
     background-color: #207567;
     color: #8DC3A7;
     outline: none;
+  }
+
+  :hover:disabled {
+    cursor: not-allowed;
   }
 `;
