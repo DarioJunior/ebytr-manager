@@ -1,15 +1,9 @@
 import PropTypes from 'prop-types';
-import { React, useState } from 'react';
+import { React } from 'react';
 import { TextArea } from './styles';
 
 export default function GenericTextArea(props) {
-  const { textValue } = props;
-  const [textAreaValue, setTextAreaValue] = useState(textValue);
-
-  const handleTextAreaChange = (target) => {
-    const { value } = target;
-    setTextAreaValue(value);
-  };
+  const { textAreaValue, setTextAreaValue } = props;
 
   return (
     <TextArea
@@ -17,15 +11,17 @@ export default function GenericTextArea(props) {
       cols="33"
       rows="4"
       value={ textAreaValue }
-      onChange={ ({ target }) => handleTextAreaChange(target) }
+      onChange={ ({ target }) => setTextAreaValue(target.value) }
     />
   );
 }
 
 GenericTextArea.defaultProps = {
-  textValue: '',
+  textAreaValue: '',
+  setTextAreaValue: PropTypes.func,
 };
 
 GenericTextArea.propTypes = {
-  textValue: PropTypes.string,
+  setTextAreaValue: PropTypes.func,
+  textAreaValue: PropTypes.string,
 };

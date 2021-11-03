@@ -5,10 +5,13 @@ async function getUserByEmailInDB(userEmail) {
   .then((db) => db.collection('users')
   .findOne({ email: userEmail }));
 
+  const { _id, name, email, role } = result;
+
   return {
-    name: result.name,
-    email: result.email,
-    role: result.role,
+    _id,
+    name,
+    email,
+    role,
   };
 }
 

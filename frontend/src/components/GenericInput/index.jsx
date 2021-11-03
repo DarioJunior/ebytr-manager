@@ -1,18 +1,25 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { React } from 'react';
 import { Input } from './styles';
 
-export function GenericInput(props) {
-  const [inputValue, setInputValue] = useState(props.value);
-
-  const handleInputChange = (target) => {
-    const value = target.value;
-    setInputValue(value);
-  };
+export default function GenericInput(props) {
+  const { inputValue, setInputValue } = props;
 
   return (
-    <Input type="text" 
+    <Input
+      type="text"
       value={ inputValue }
-      onChange={ ({ target }) => handleInputChange(target) }
+      onChange={ ({ target }) => setInputValue(target.value) }
     />
   );
 }
+
+GenericInput.defaultProps = {
+  inputValue: '',
+  setInputValue: PropTypes.func,
+};
+
+GenericInput.propTypes = {
+  inputValue: PropTypes.string,
+  setInputValue: PropTypes.func,
+};
