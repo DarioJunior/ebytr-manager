@@ -1,12 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.section`
   background-color: #207567;
-  height: 70vh;
+  height: 75vh;
   margin: 0 auto;
   max-width: 1440px;
+  padding: 30px 10px;
+  width: 100%;
   overflow: auto;
-  width: 100vw;
 `;
 
 export const TaskContainer = styled.div`
@@ -14,9 +15,18 @@ export const TaskContainer = styled.div`
     width: 90%;
     min-width: 200px;
   }
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+  }
+
   background-color: white;
   border-radius: 8px;
-  margin: 25px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0px auto 15px auto;
   padding: 10px 20px;
   text-align: center;
   width: 45%;
@@ -31,39 +41,37 @@ export const TaskContainer = styled.div`
 
 export const ParagraphName = styled.h3`
   color: rgb(100, 100, 100);
-  /* background-color: white; */
-  /* border: 1px solid grey; */
-`
+`;
+
 export const ParagraphDescription = styled.p`
   font-size: 0.9rem;
   background-color: white;
-`
+`;
 
 export const Button = styled.button`
-  background-color: ${props => props.red ? 'red' : '#207567'};
+  background-color: ${(props) => (props.red ? 'red' : '#207567')};
   border-radius: 4px;
   color: white;
   font-size: 1.2rem;
   font-weight: 500;
   height: 35px;
-  margin: 10px 0 10px 10px;
+  margin: 10px 0 10px 0px;
   transition: 0.5s;
   width: 150px;
 
   :hover {
     background-color: white;
-    border: 1px solid ${props => props.red ? 'red' : 'green'};
+    border: 1px solid ${(props) => (props.red ? 'red' : 'green')};
     border-radius: 15px;
-    color:  ${props => props.red ? 'red' : 'green'};
+    color:  ${(props) => (props.red ? 'red' : 'green')};
     cursor: pointer;
   }
-  `;
+`;
 
-  export const ParagraphStatus = styled.p`
+export const ParagraphStatus = styled.p`
     background-color: #8DC3A7;
     border: 2px solid black;
     border-radius: 8px;
     color: white;
-
+    width: 120px;
   `;
-

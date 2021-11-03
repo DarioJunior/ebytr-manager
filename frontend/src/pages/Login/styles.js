@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.form`
-  align-items: center;
   background-color: #207567;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   height: 100vh;
   max-width: 1440px;
@@ -12,6 +12,14 @@ export const Container = styled.form`
 `;
 
 export const Input = styled.input`
+  @media screen and (min-width: 200px) {
+    font-size: 1rem;
+    width: 70%;
+    height: 40px;
+  }
+
+  max-width: 300px;
+  
   border-radius: 5px;
   margin-top: 20px;
   height: 50px;
@@ -27,6 +35,18 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
+  @media screen and (min-width: 200px) {
+      font-size: 1rem;
+      width: 70%;
+      height: 40px;
+    }
+
+    @media screen and (min-width: 200px) {
+      font-size: 1rem;
+      width: 70%;
+      height: 40px;
+    }
+
   background-color: #8DC3A7;
   border-radius: 1px;
   color: #207567;
@@ -34,7 +54,7 @@ export const Button = styled.button`
   font-weight: 800;
   height: 40px;
   margin-top:30px;
-  width: 200px;
+  max-width: 300px;
 
   transition: 0.5s;
 

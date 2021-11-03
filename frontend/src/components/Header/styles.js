@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 // #DFEAE2 #B4D6C1 #8DC3A7 #6BAF92 #4E9C81 #358873 #207567
 export const Container = styled.header`
   @media screen and (min-width: 200px) {
@@ -25,7 +25,8 @@ export const LogoContainer = styled.div`
   height: 50px;
   text-align: center;
   width: 200px;
-`
+`;
+
 export const Logo = styled.p`
   color: #4E9C81;
   font-size: 2rem;
