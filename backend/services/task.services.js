@@ -15,8 +15,8 @@ async function updateTask(taskInfo, userId) {
   return updatedTask;
 }
 
-async function deleteTask(taskId) {
-  const deletedTask = await TaskModel.deleteTaskInDB(taskId);
+async function deleteTask(taskId, userId) {
+  const deletedTask = await TaskModel.deleteTaskInDB(taskId, userId);
   return deletedTask;
 }
 
