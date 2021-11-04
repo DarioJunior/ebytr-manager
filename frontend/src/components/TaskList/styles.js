@@ -75,3 +75,11 @@ export const ParagraphStatus = styled.p`
     color: white;
     width: 120px;
   `;
+
+export const InputSelect = styled.select`
+background-color: #8DC3A7;
+border: 2px solid black;
+border-radius: 8px;
+color: white;
+width: 120px;
+`;

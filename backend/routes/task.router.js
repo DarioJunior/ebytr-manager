@@ -8,5 +8,7 @@ router.get('/', AuthMiddleware.authJWT, TaskController.getTasksByUser);
 router.post('/', AuthMiddleware.authJWT, TaskController.addTask);
 // PUT's
 router.put('/', AuthMiddleware.authJWT, TaskController.updateTask);
+// DELETE'
+router.delete('/:id', AuthMiddleware.authJWT, TaskController.deleteTask);
 
 module.exports = router;

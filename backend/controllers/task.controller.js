@@ -53,8 +53,25 @@ async function updateTask(req, res, next) {
   }
 }
 
+async function deleteTask(req, res, next) {
+  try {
+    const { id } = req.params;
+    const { userId } = req;
+
+    const updatedResult = await TaskService.deleteTask(id, userId);
+
+    if (updatedResult) {
+      return res.status(HTTP_STATUS.code.OK).send('Task deletada com sucesso');
+    }
+    return res.status(HTTP_STATUS.code.UNAUTHORIZED).send('Usuário não autorizado');
+  } catch (err) {
+    return next(ApiError.internalServerError());
+  }
+}
+
 module.exports = {
   getTasksByUser,
   addTask,
   updateTask,
+  deleteTask,
 };

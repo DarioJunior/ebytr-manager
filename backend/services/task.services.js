@@ -15,8 +15,14 @@ async function updateTask(taskInfo, userId) {
   return updatedTask;
 }
 
+async function deleteTask(taskId) {
+  const deletedTask = await TaskModel.deleteTaskInDB(taskId);
+  return deletedTask;
+}
+
 module.exports = {
   addTask,
   getTasksByUser,
   updateTask,
+  deleteTask,
 };
