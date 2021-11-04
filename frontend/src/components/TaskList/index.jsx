@@ -17,7 +17,7 @@ import {
 
 export default function TaskList() {
   const IS_LOADING_STORE = useSelector((state) => state.TasksReducer.isLoading);
-  const TASK_LIST_STORE = useSelector((state) => state.TasksReducer.tasks);
+  // const TASK_LIST_STORE = useSelector((state) => state.TasksReducer.tasks);
 
   const [isLoading, setIsLoading] = useState(IS_LOADING_STORE);
   const [taskList, setTaskList] = useState([]);
@@ -38,28 +38,33 @@ export default function TaskList() {
   }, []);
 
   useEffect(() => {
-    if(isLoading) {
-      if (taskList !== []) {
-        setIsLoading(false);
-      }
+    if (isLoading && taskList !== []) {
+      setIsLoading(false);
     }
   }, [isLoading, taskList]);
 
+  // https://stackoverflow.com/questions/8900732/sort-objects-in-an-array-alphabetically-on-one-property-of-the-array
   useEffect(() => {
     if (taskOrder === 'Alphabetic') {
-      const tasks = taskList.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+      const tasks = taskList.sort(
+        (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
+      );
       setIsLoading(true);
       setTaskList(tasks);
     }
 
     if (taskOrder === 'Date') {
-      const tasks = taskList.sort((a, b) => a.date.toLowerCase().localeCompare(b.date.toLowerCase()));
+      const tasks = taskList.sort(
+        (a, b) => a.date.toLowerCase().localeCompare(b.date.toLowerCase()),
+      );
       setIsLoading(true);
       setTaskList(tasks);
     }
 
     if (taskOrder === 'Status') {
-      const tasks = taskList.sort((a, b) => a.status.toLowerCase().localeCompare(b.status.toLowerCase()));
+      const tasks = taskList.sort(
+        (a, b) => a.status.toLowerCase().localeCompare(b.status.toLowerCase()),s
+      );
       setIsLoading(true);
       setTaskList(tasks);
     }
