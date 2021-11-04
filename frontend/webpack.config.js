@@ -10,23 +10,23 @@ module.exports = {
   devServer: {
     static: path.resolve(__dirname, 'public'),
     hot: true,
-    historyApiFallback: true // (1) extra para funcionar direito o Router 
+    historyApiFallback: true, // (1) extra para funcionar direito o Router
   },
   devtool: isDevelopment ? 'eval-source-map' : 'source-map',
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: '/' // (1) extra para funcionar direito o Router
+    publicPath: '/', // (1) extra para funcionar direito o Router
   },
   resolve: {
-    extensions: [ '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html')
-    })
+      template: path.resolve(__dirname, 'public', 'index.html'),
+    }),
   ].filter(Boolean),
   module: {
     rules: [
@@ -37,9 +37,9 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             plugins: [
-              isDevelopment && require.resolve('react-refresh/babel')
+              isDevelopment && require.resolve('react-refresh/babel'),
             ].filter(Boolean),
-          }
+          },
         },
       },
       {
@@ -59,6 +59,6 @@ module.exports = {
           },
         ],
       },
-    ]
-  }
-}
+    ],
+  },
+};

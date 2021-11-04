@@ -40,6 +40,7 @@ export default function Login() {
   return (
     <Container onSubmit={ (event) => handleSubmitForm(event) }>
       <Input
+        data-testid="input-email"
         name="email"
         placeholder="email@example.com"
         type="text"
@@ -47,6 +48,7 @@ export default function Login() {
         valor={ emailInput }
       />
       <Input
+        data-testid="input-password"
         name="password"
         placeholder="password"
         type="password"
@@ -54,6 +56,7 @@ export default function Login() {
         valor={ passwordInput }
       />
       <Button
+        data-testid="login-button"
         type="submit"
         disabled={ loginButtonDisabled }
       >
