@@ -1,9 +1,8 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import TaskModal from '../TaskModal';
-
 import { getAllTasks, deleteTask } from '../../api/task.services';
 import addTasksList from '../../actions/tasks.actions';
+import TaskModal from '../TaskModal';
 
 import {
   Button,

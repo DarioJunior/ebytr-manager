@@ -17,7 +17,6 @@ export default function AddTaskModal(props) {
   const [taskDescriptionValue, setTaskDescriptionValue] = useState('');
   const [taskDateValue, setTaskDateValue] = useState('');
   const [taskStatusValue, setTaskStatusValue] = useState('');
-  // const history = useHistory();
 
   // function resetFieldValues() {
   //   setTaskNameValue();

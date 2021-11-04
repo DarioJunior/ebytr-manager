@@ -20,8 +20,6 @@ export default function TaskModal(props) {
   const { task, onHide } = props;
   const { _id, name, description, status } = task;
 
-  console.log('task', task);
-
   const [inputValue, setInputValue] = useState(name);
   const [textAreaValue, setTextAreaValue] = useState(description);
   const [dateInputValue, setDateInputValue] = useState(description);
