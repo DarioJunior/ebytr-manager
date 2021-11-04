@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack serve",
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom --coverage",
+    "watch": "jest --env=jsdom --coverage --watch"
   },
   "keywords": [],
   "author": "",

@@ -1,18 +1,13 @@
 import { React } from 'react';
-import { useSelector } from 'react-redux';
 import { Container, Logo, LogoContainer } from './styles';
 
 export default function Header() {
-  const userInfos = useSelector((state) => state.UserReducer.user);
   return (
     <Container>
       <LogoContainer>
-        <Logo>
+        <Logo data-testid="header-logo">
           Ebytr Mngr.
         </Logo>
-        <p>
-          { userInfos.name }
-        </p>
       </LogoContainer>
     </Container>
   );
