@@ -29,12 +29,15 @@ export async function addTask(
 
 export async function getAllTasks() {
   const token = JSON.parse(localStorage.getItem('token'));
-  const { data } = await axios.get(BASE_URL, { headers: { Authorization: token } });
+  const { data } = await axios.get(
+    BASE_URL,
+    { headers: { Authorization: token } },
+  );
   return data;
 }
 
 export async function editTask(
-  _id,
+  taskId,
   taskNameValue,
   taskDescriptionValue,
   taskDateValue,
@@ -43,12 +46,28 @@ export async function editTask(
   const token = JSON.parse(localStorage.getItem('token'));
 
   const result = await axios.put(BASE_URL, {
-    _id,
+    taskId,
     taskNameValue,
     taskDescriptionValue,
     taskDateValue,
     taskStatusValue,
-  }, { headers: { Authorization: token } });
+  },
+  { headers: { Authorization: token } });
 
   return result;
+}
+
+export async function deleteTask(taskId) {
+  const token = JSON.parse(localStorage.getItem('token'));
+  const { status } = await axios.delete(
+    `${BASE_URL}/${taskId}`,
+    { headers: { Authorization: token } },
+  );
+
+  if (status === 200) {
+    console.log('deletado');
+    return true;
+  }
+
+  return false;
 }

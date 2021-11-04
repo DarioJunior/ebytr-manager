@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TaskModal from '../TaskModal';
 
-import { getAllTasks } from '../../api/task.services';
+import { getAllTasks, deleteTask } from '../../api/task.services';
 import addTasksList from '../../actions/tasks.actions';
 
 import {
@@ -12,6 +12,7 @@ import {
   ParagraphName,
   ParagraphStatus,
   TaskContainer,
+  InputSelect,
 } from './styles';
 
 export default function TaskList() {
@@ -22,25 +23,71 @@ export default function TaskList() {
   const [taskList, setTaskList] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const [currentTask, setCurrentTask] = useState(false);
+  const [taskOrder, setTaskOrder] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchTasks = async () => {
       const data = await getAllTasks();
       if (data.length !== 0) {
-        dispatch(addTasksList(data));
-        setIsLoading(false);
+        await dispatch(addTasksList(data));
+        setTaskList(data);
       }
     };
     fetchTasks();
   }, []);
 
   useEffect(() => {
-    setTaskList(TASK_LIST_STORE);
-  }, [isLoading, TASK_LIST_STORE]);
+    if(isLoading) {
+      if (taskList !== []) {
+        setIsLoading(false);
+      }
+    }
+  }, [isLoading, taskList]);
+
+  useEffect(() => {
+    if (taskOrder === 'Alphabetic') {
+      const tasks = taskList.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+      setIsLoading(true);
+      setTaskList(tasks);
+    }
+
+    if (taskOrder === 'Date') {
+      const tasks = taskList.sort((a, b) => a.date.toLowerCase().localeCompare(b.date.toLowerCase()));
+      setIsLoading(true);
+      setTaskList(tasks);
+    }
+
+    if (taskOrder === 'Status') {
+      const tasks = taskList.sort((a, b) => a.status.toLowerCase().localeCompare(b.status.toLowerCase()));
+      setIsLoading(true);
+      setTaskList(tasks);
+    }
+  }, [taskOrder]);
+
+  const handleTaskDelete = async (task) => {
+    const { _id } = task;
+    const success = await deleteTask(
+      _id,
+    );
+
+    if (success) {
+      document.location.reload(false);
+      return onHide();
+    }
+  };
 
   return (
     <Container>
+      <InputSelect
+        value={ taskOrder }
+        onChange={ ({ target }) => setTaskOrder(target.value) }
+      >
+        <option value="Order by">Order by</option>
+        <option value="Alphabetic">Alphabetic</option>
+        <option value="Date">Date</option>
+        <option value="Status">Status</option>
+      </InputSelect>
       {
         isLoading ? <p>CARREGANDO</p>
           : taskList.map((task, index) => (
@@ -60,6 +107,7 @@ export default function TaskList() {
               <Button
                 type="button"
                 red
+                onClick={ () => { handleTaskDelete(task); } }
               >
                 Delete
               </Button>

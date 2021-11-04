@@ -1,5 +1,5 @@
-const connection = require('./connection');
 const { ObjectId } = require('mongodb');
+const connection = require('./connection');
 
 async function addTaskInDB(taskInfo, userId) {
   const { taskNameValue, taskDescriptionValue, taskDateValue, taskStatusValue } = taskInfo;
@@ -32,17 +32,11 @@ async function getTasksByUserInDB(userId) {
 }
 
 async function uptadeTaskInDB(taskInfo, userId) {
-  const {
-    _id,
-    taskNameValue,
-    taskDescriptionValue,
-    taskDateValue,
-    taskStatusValue } = taskInfo;
-
+  const { taskId, taskNameValue, taskDescriptionValue, taskDateValue, taskStatusValue } = taskInfo;
   const result = await connection()
   .then((db) => db.collection('tasks')
   .updateOne(
-    { _id: ObjectId(_id), userId },
+    { _id: ObjectId(taskId), userId },
     {
       $set: {
         name: taskNameValue,
@@ -54,7 +48,17 @@ async function uptadeTaskInDB(taskInfo, userId) {
   ));
   if (result.modifiedCount === 1) {
     return true;
-  };
+  }
+  return false;
+}
+
+async function deleteTaskInDB(taskId, userId) {
+  const result = await connection()
+  .then((db) => db.collection('tasks')
+  .deleteOne({ _id: ObjectId(taskId), userId }));
+
+  if (result.deletedCount === 1) return true;
+
   return false;
 }
 
@@ -62,4 +66,5 @@ module.exports = {
   addTaskInDB,
   getTasksByUserInDB,
   uptadeTaskInDB,
+  deleteTaskInDB,
 };

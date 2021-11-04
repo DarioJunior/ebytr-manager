@@ -9,7 +9,7 @@ import ModalTitle from 'react-bootstrap/ModalTitle';
 
 import GenericInput from '../GenericInput';
 import GenericSelect from '../GenericSelect';
-import GenericDate from '../GenericDate';
+import GenericInputDate from '../GenericDate';
 import GenericTextArea from '../GenericTextArea';
 
 import { editTask } from '../../api/task.services';
@@ -68,7 +68,7 @@ export default function TaskModal(props) {
             statusValue={ statusValue }
             setStatusValue={ setStatusValue }
           />
-          <GenericDate
+          <GenericInputDate
             dateInputValue={ dateInputValue }
             setDateInputValue={ setDateInputValue }
           />
