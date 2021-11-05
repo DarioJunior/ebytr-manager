@@ -42,8 +42,8 @@ async function uptadeTaskInDB(taskInfo, userId) {
         name: taskNameValue,
         description: taskDescriptionValue,
         date: taskDateValue,
-        task: taskStatusValue,
-      }
+        status: taskStatusValue,
+      },
     },
   ));
   if (result.modifiedCount === 1) {

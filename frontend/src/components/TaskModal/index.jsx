@@ -18,12 +18,14 @@ import { Button, ModalBodyContainer } from './styles';
 
 export default function TaskModal(props) {
   const { task, onHide } = props;
-  const { _id, name, description, status } = task;
+  const { _id, name, description, date, status } = task;
 
   const [inputValue, setInputValue] = useState(name);
   const [textAreaValue, setTextAreaValue] = useState(description);
-  const [dateInputValue, setDateInputValue] = useState(description);
+  const [dateInputValue, setDateInputValue] = useState(date);
   const [statusValue, setStatusValue] = useState(status);
+
+  console.log(task);
 
   const handleEditUpdate = async () => {
     const success = await editTask(
@@ -92,6 +94,7 @@ TaskModal.propTypes = {
   onHide: PropTypes.func.isRequired,
   task: PropTypes.shape({
     _id: PropTypes.string,
+    date: PropTypes.string,
     description: PropTypes.string,
     name: PropTypes.string,
     status: PropTypes.string,

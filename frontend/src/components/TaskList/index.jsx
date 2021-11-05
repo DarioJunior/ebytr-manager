@@ -14,6 +14,7 @@ import {
   InputSelect,
 } from './styles';
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export default function TaskList() {
   const IS_LOADING_STORE = useSelector((state) => state.TasksReducer.isLoading);
   // const TASK_LIST_STORE = useSelector((state) => state.TasksReducer.tasks);
@@ -34,7 +35,7 @@ export default function TaskList() {
       }
     };
     fetchTasks();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (isLoading && taskList !== []) {
@@ -62,12 +63,12 @@ export default function TaskList() {
 
     if (taskOrder === 'Status') {
       const tasks = taskList.sort(
-        (a, b) => a.status.toLowerCase().localeCompare(b.status.toLowerCase()),s
+        (a, b) => a.status.toLowerCase().localeCompare(b.status.toLowerCase()),
       );
       setIsLoading(true);
       setTaskList(tasks);
     }
-  }, [taskOrder]);
+  }, [taskList, taskOrder]);
 
   const handleTaskDelete = async (task) => {
     const { _id } = task;
@@ -95,13 +96,20 @@ export default function TaskList() {
       {
         isLoading ? <p>CARREGANDO</p>
           : taskList.map((task, index) => (
-            <TaskContainer key={ index }>
+            <TaskContainer
+              key={ index }
+              concluded={ task.status === 'Concluded' }
+            >
               <ParagraphName>
                 {task.name}
                 :
               </ParagraphName>
               <ParagraphDescription>{task.description}</ParagraphDescription>
-              <ParagraphStatus>{task.status}</ParagraphStatus>
+              <ParagraphStatus
+                status={ task.status }
+              >
+                {task.status}
+              </ParagraphStatus>
               <Button
                 type="button"
                 onClick={ () => { setCurrentTask(task); setModalShow(true); } }

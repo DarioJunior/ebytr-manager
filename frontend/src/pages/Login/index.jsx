@@ -26,14 +26,15 @@ export default function Login() {
 
   async function handleSubmitForm(event) {
     event.preventDefault();
-    const userExists = await validateLogin(emailInput, passwordInput);
+    console.log('click');
+    const userExistsInfos = await validateLogin(emailInput, passwordInput);
 
-    if (userExists) {
-      dispatch(loginAction(userExists));
+    if (userExistsInfos) {
+      dispatch(loginAction(userExistsInfos));
       return history.push('/home');
     }
 
-    alert('Usuário não existe, tente novamente');
+    alert('Unknown user, try again');
     return history.push('/');
   }
 

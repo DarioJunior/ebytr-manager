@@ -3,6 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:3333/login';
 
 export default async function validateLogin(email, password) {
+  console.log(email, password);
   const { data } = await axios.post(BASE_URL, {
     email,
     password,

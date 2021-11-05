@@ -41,12 +41,14 @@ async function updateTask(req, res, next) {
     const taskInfo = req.body;
     const { userId } = req;
 
+    console.log(taskInfo);
+
     const updatedResult = await TaskService.updateTask(taskInfo, userId);
 
     if (updatedResult) {
       return res.status(HTTP_STATUS.code.OK).send('Task atualizada com sucesso');
     }
-
+    console.log(updatedResult);
     return next(ApiError.invalidEntries());
   } catch (err) {
     return next(ApiError.internalServerError());
