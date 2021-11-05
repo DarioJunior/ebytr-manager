@@ -7,6 +7,7 @@ const generateJWT = require('../utils/JTWTokenGenerator');
 async function logIn(req, res, next) {
   try {
     const { email, password } = req.body;
+    console.log(email, password);
     const result = await UserService.getUserByEmail(email, password);
     if (!result) {
       return next(ApiError.incorrectInfos());

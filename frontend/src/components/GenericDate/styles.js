@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
 export const Input = styled.input`
-  color: red;
+  border: 1px solid gray;
+  margin-top: 10px;
 `;

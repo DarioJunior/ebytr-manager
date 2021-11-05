@@ -19,13 +19,14 @@ export default function Login() {
     const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const minLength = 6;
     setLoginButtonDisabled(true);
-    if (regex.test(emailInput) && passwordInput.length >= minLength) {
+    if (regex.test(emailInput) && passwordInput.length > minLength) {
       setLoginButtonDisabled(false);
     }
   }, [emailInput, passwordInput]);
 
   async function handleSubmitForm(event) {
     event.preventDefault();
+    console.log('click');
     const userExistsInfos = await validateLogin(emailInput, passwordInput);
 
     if (userExistsInfos) {

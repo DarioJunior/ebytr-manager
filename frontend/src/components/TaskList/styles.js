@@ -2,12 +2,20 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   background-color: #207567;
+  box-sizing: border-box;
+  
   height: 75vh;
   margin: 0 auto;
   max-width: 1440px;
-  padding: 30px 10px;
+  padding: 10px 10px;
   width: 100%;
   overflow: auto;
+
+  display: inline;
+  text-align: center;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
 `;
 
 export const TaskContainer = styled.div`
@@ -26,7 +34,7 @@ export const TaskContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0px auto 15px auto;
+  margin: 10px auto 15px auto;
   padding: 10px 20px;
   text-align: center;
   width: 45%;
@@ -69,17 +77,26 @@ export const Button = styled.button`
 `;
 
 export const ParagraphStatus = styled.p`
-    background-color: #8DC3A7;
-    border: 2px solid black;
-    border-radius: 8px;
-    color: white;
-    width: 120px;
-  `;
+  background-color: ${({ status }) => (
+    // eslint-disable-next-line no-nested-ternary
+    status === 'Pending' ? 'red'
+      : status === 'In Progress'
+        ? '#9B870C'
+        : 'green')
+};
+  border: 2px solid black;
+  border-radius: 8px;
+  color: white;
+  width: 120px;
+`;
 
 export const InputSelect = styled.select`
-background-color: #8DC3A7;
+background-color: white;
 border: 2px solid black;
 border-radius: 8px;
-color: white;
+/* color: white; */
+margin: 0 auto;
+height: 4
+0px;
 width: 120px;
 `;
