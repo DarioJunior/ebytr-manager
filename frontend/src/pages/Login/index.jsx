@@ -19,21 +19,21 @@ export default function Login() {
     const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const minLength = 6;
     setLoginButtonDisabled(true);
-    if (regex.test(emailInput) && passwordInput.length > minLength) {
+    if (regex.test(emailInput) && passwordInput.length >= minLength) {
       setLoginButtonDisabled(false);
     }
   }, [emailInput, passwordInput]);
 
   async function handleSubmitForm(event) {
     event.preventDefault();
-    const userExists = await validateLogin(emailInput, passwordInput);
+    const userExistsInfos = await validateLogin(emailInput, passwordInput);
 
-    if (userExists) {
-      dispatch(loginAction(userExists));
+    if (userExistsInfos) {
+      dispatch(loginAction(userExistsInfos));
       return history.push('/home');
     }
 
-    alert('Usuário não existe, tente novamente');
+    alert('Unknown user, try again');
     return history.push('/');
   }
 
