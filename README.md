@@ -1,7 +1,7 @@
-# Ebytr Mngr 
+# Ebytr Mngr - [80%]
 ## Obs.: Ainda está configurado com localhost, pendente utilizar Mongoose para configurar o backend e fazer o deploy no heroku.
 
-Aplicação desenvolvida para auxliar as pessoas colaboradoras na produtividade, através de um registro de tasks individuais, foram desenvolvidas funcionalidades conforme as necessidades abordadas:
+Aplicação desenvolvida na stack MERN para auxiliar as pessoas colaboradoras na produtividade, através de um registro de tasks individuais, foram desenvolvidas funcionalidades conforme as necessidades abordadas:
 
 1. Visualizar a lista de tarefas;
 2. Esta lista deve ser ordenável por ordem alfabética, data de criação ou por status;
@@ -15,7 +15,7 @@ Aplicação desenvolvida para auxliar as pessoas colaboradoras na produtividade,
 2) Instalar as dependências no back-end e front-end com `npm install`;
 
 ## Execução
-Para rodar a aplicação localmente basta utilizar o comando `npm run dev` nos diretórios de backend e frontend, e para acessá-los digitar http://localhost:8080 (front-end) e http://localhost:3333 (backend). 
+Para rodar a aplicação localmente basta utilizar o comando `npm run dev` nos diretórios de backend e frontend, e para acessá-los digitar http://localhost:8080 (front-end) e http://localhost:3333 (backend), *certifique-se de que não há outras aplicações rodando nas respectivas portas*. 
 
 ## Tecnologias utilizadas:
 - ReactJS -  utilizando functional components combinados com styled-components (CSS-in-JS);
