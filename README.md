@@ -1,4 +1,5 @@
 # Ebytr Mngr 
+## Obs.: Ainda está configurado com localhost, pendente utilizar Mongoose para configurar o backend e fazer o deploy no heroku.
 
 Aplicação desenvolvida para auxliar as pessoas colaboradoras na produtividade, através de um registro de tasks individuais, foram desenvolvidas funcionalidades conforme as necessidades abordadas:
 
